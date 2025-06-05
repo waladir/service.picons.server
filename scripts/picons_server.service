@@ -1,0 +1,12 @@
+[Unit]
+Description=Picons Server
+After=network.target
+
+[Service]
+Type=idle
+Restart=on-failure
+User=<uzivatel, pod kterym Picons Server ma bezet>
+ExecStart=/usr/bin/python3 <cesta k Picons Serveru>/service.picons.server/server.py
+
+[Install]
+WantedBy=multi-user.target
