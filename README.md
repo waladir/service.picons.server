@@ -2,11 +2,11 @@
 
 Picons Server slouží jako zdroj log kanálů, dostupných přes http protokol. Lze ho používat buď jako doplněk v Kodi i samostatně.
 
-<b><u>Kodi</u></b>
+<h3>Kodi</h3>
 
 Nainstalujte doplněk a v jeho nastavení můžete změnit port pro webserver. Při změně restartněte Kodi.
 
-<b><u>Samostatný skript</u></b>
+<h3>Samostatný skript</h3>
 
 Picons Server pro své fungování vyžaduje python modul bottle. Nainstaluje buď jako balíček OS (python3-bottle) nebo pomocí pip3 (pip3 install bottle)
 
@@ -17,7 +17,7 @@ Pokud chcete Picons Server spustit na linuxu se systemd jako službu, jako root/
 - systemctl enable picons_server
 - systemctl start picons_server
 
-<b><u>Použití</u></b>
+<h3>Použití</h3>
 
 Pro získání picony kanálu vrací http://&lt;IP adresa&gt;/picons/&lt;jméno kanálu&gt;
 
