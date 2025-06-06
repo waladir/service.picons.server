@@ -24,6 +24,8 @@ def get_data_dir():
         from xbmcvfs import translatePath
         addon = xbmcaddon.Addon()
         data_dir = translatePath(addon.getAddonInfo('profile'))
+        if not os.path.exists(data_dir):
+            os.mkdir(data_dir)
     else:
         data_dir = os.path.join(get_script_path(), 'data')
     return data_dir
@@ -52,7 +54,7 @@ def log_message(message):
 def display_message(message):
     if is_kodi() == True:
         import xbmcgui
-        xbmcgui.Dialog().notification('PIcons Server', message, xbmcgui.NOTIFICATION_ERROR, 4000)
+        xbmcgui.Dialog().notification('Picons Server', message, xbmcgui.NOTIFICATION_ERROR, 4000)
     else:
         print(message)
 

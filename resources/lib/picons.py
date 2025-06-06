@@ -29,7 +29,7 @@ def clear_cache():
         ts = int(time.time())
         data_dir = get_data_dir()
         for picon in list(cache_data):
-            if int(cache_data[picon]) < ts:
+            if int(cache_data[picon]) + 60*60*24*int(get_config_value('dnu_v_kesi')) < ts:
                 picon_file = os.path.join(data_dir, picon)
                 if os.path.exists(picon_file):
                     os.remove(picon_file)
@@ -37,7 +37,11 @@ def clear_cache():
         save_json_data({'filename' : 'cache.json', 'description' : 'dat keše'}, cache_data)
 
 def normalize_picon_name(picon):
-    return remove_diacritics(picon).lower().replace('hd', '').replace(' ', '').replace(':', '').replace('/', '')
+    remove_string = [' hd', ' ad', ' md 1', ' md 2', ' md 3', ' md 4', ' md 5', ' md 6', ' md 7', ' md 8', ' ', '+', ':', '/']
+    picon = remove_diacritics(picon).lower()
+    for string in remove_string:
+        picon = picon.replace(string, '')
+    return picon
 
 def remap_picon(picon):
     remapped_picon = remap(picon)
@@ -55,7 +59,7 @@ def get_err_picon():
 def get_picon(picon, remap = True):
     data_dir = get_data_dir()
     picon_filename = normalize_picon_name(picon)
-    
+    print(picon_filename)
     picon_file = os.path.join(data_dir, picon_filename)
     if int(get_config_value('dnu_v_kesi')) > 0:
         if os.path.exists(picon_file):
@@ -67,7 +71,7 @@ def get_picon(picon, remap = True):
                 cache_data = load_json_data({'filename' : 'cache.json', 'description' : 'dat keše'})
                 if cache_data is None:
                     cache_data = {}
-                cache_data.update({picon_filename : int(time.time()) + 60*60*24*int(get_config_value('dnu_v_kesi'))})
+                cache_data.update({picon_filename : int(time.time())})
                 save_json_data({'filename' : 'cache.json', 'description' : 'dat keše'}, cache_data)
                 with open(picon_file, mode='rb') as file:
                     return file.read()       
@@ -75,7 +79,6 @@ def get_picon(picon, remap = True):
                 if remap == True:
                     return remap_picon(picon_filename)
                 else:
-                    log_message('Chyba při stažení ' + picon_filename)
                     return get_err_picon()
     else:
         try:
