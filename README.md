@@ -19,9 +19,9 @@ Pokud chcete Picons Server spustit na linuxu se systemd jako službu, jako root/
 
 <h3>Použití</h3>
 
-Pro získání picony kanálu vrací http://&lt;IP adresa&gt;/picons/&lt;jméno kanálu&gt;
+Pro získání picony kanálu vrací http://&lt;IP adresa&gt;:&lt;IP adresa&gt;/picons/&lt;jméno kanálu&gt; (např. http://localhost:8083/picons/ČT1 HD)
 
-Za jméno kanálu lze přidat příponu .png, ale není to nezbytně nutné. Pro použití v TVheadendu můžete použít http://&lt;IP adresa&gt;/picons/%C. Při použití v jiných Kodi doplňcích je potřeba použít funkci quote z urllib.parse.
+Za jméno kanálu lze přidat příponu .png, ale není to nezbytně nutné. Pro použití v TVheadendu můžete použít http://&lt;IP adresa&gt;:/&lt;IP adresa&gt;/picons/%C. Při použití v jiných Kodi doplňcích je potřeba použít funkci quote z urllib.parse.
 
 Doplněk převede vygeneruje normalizované jméno souboru. Odstraní diakritiku, převede velká písmena na malá, odstraní mezery, lomítka, dvojtečku a řetězec hd. 
 
