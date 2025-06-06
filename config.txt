@@ -1,4 +1,5 @@
 {
 	"webserver_port":8083,
-	"dnu_v_kesi":1
+	"dnu_v_kesi":1,
+	"url_s_piconami":"https://marhycz.github.io/picons/640/"
 }

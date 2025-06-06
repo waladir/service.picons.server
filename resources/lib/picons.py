@@ -67,7 +67,7 @@ def get_picon(picon, remap = True):
                 return file.read()       
         else:
             try:
-                urlretrieve(PICONS_URL + picon_filename, picon_file)
+                urlretrieve(get_config_value('url_s_piconami') + picon_filename, picon_file)
                 cache_data = load_json_data({'filename' : 'cache.json', 'description' : 'dat keše'})
                 if cache_data is None:
                     cache_data = {}
@@ -82,7 +82,7 @@ def get_picon(picon, remap = True):
                     return get_err_picon()
     else:
         try:
-            response = urlopen(PICONS_URL + picon_filename)
+            response = urlopen(get_config_value('url_s_piconami') + picon_filename)
             return response.read()
         except URLError as e:
             if remap == True:

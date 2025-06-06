@@ -3,5 +3,6 @@
 	<category label="Nastavení">
                 <setting label="Port serveru" type="number" id="webserver_port" default="8083"/>
                 <setting label="Počet dnů v keší (0=bez kešování)" type="slider" id="dnu_v_kesi" range="0,1,30" default="1" option="int"/>
+                <setting label="URL s piconami" type="text" id="url_s_piconami" default="https://marhycz.github.io/picons/640/"/>
 	</category>
 </settings>
