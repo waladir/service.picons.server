@@ -35,6 +35,9 @@ def clear_cache():
                     os.remove(picon_file)
                 del cache_data[picon]
         save_json_data({'filename' : 'cache.json', 'description' : 'dat keše'}, cache_data)
+        for file in os.listdir(data_dir):
+            if '.png' in file and file not in cache_data.keys():
+                os.remove(os.path.join(data_dir, file))
 
 def normalize_picon_name(picon):
     remove_string = [' hd', ' ad', ' md 1', ' md 2', ' md 3', ' md 4', ' md 5', ' md 6', ' md 7', ' md 8', ' ', '+', ':', '/']
