@@ -6,8 +6,6 @@ import time
 
 from resources.lib.utils import get_script_path, get_data_dir, get_config_value, log_message, load_json_data, save_json_data, remove_diacritics, display_message
 
-PICONS_URL = 'https://marhycz.github.io/picons/640/'
-
 def remap(picon):
     script_dir = get_script_path()
     filename = os.path.join(script_dir, 'remap.txt')
