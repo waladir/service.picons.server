@@ -1,5 +1,5 @@
 {
 	"webserver_port":8083,
 	"dnu_v_kesi":7,
-	"url_s_piconami":"https://github.com/luvadcz/piconsserver/"
+	"url_s_piconami":"https://raw.githubusercontent.com/luvadcz/piconsserver/main/"
 }

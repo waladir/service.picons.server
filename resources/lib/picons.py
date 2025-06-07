@@ -46,7 +46,7 @@ def clear_cache():
                 os.remove(os.path.join(data_dir, file))
 
 def normalize_picon_name(picon):
-    remove_string = [' hd', ' ad', ' md 1', ' md 2', ' md 3', ' md 4', ' md 5', ' md 6', ' md 7', ' md 8', ' ', '+', ':', '/', '&']
+    remove_string = [' hd', ' ad', ' md 1', ' md 2', ' md 3', ' md 4', ' md 5', ' md 6', ' md 7', ' md 8', ' ', '+', ':', '/', '&', '.']
     picon = remove_diacritics(picon).strip().lower()
     for string in remove_string:
         picon = picon.replace(string, '')
@@ -75,7 +75,7 @@ def get_picon(picon, remap = True):
                 return file.read()       
         else:
             try:
-                print(get_config_value('url_s_piconami') + picon_filename)
+                # print(get_config_value('url_s_piconami') + picon_filename)
                 resp = requests.get(get_config_value('url_s_piconami') + picon_filename)
                 if resp.status_code not in [200]:
                     if remap == True:

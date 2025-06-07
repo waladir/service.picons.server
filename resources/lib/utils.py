@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+import shutil
 
 import codecs
 import json
@@ -30,7 +31,6 @@ def get_data_dir():
         data_dir = os.path.join(get_script_path(), 'data')
     return data_dir
 
-
 def get_config_value(setting):
     if is_kodi() == True:
         import xbmcaddon
@@ -38,6 +38,10 @@ def get_config_value(setting):
         return addon.getSetting(setting)
     else:
         config_file = os.path.join(get_script_path(), 'config.txt')
+        sample = os.path.join(get_script_path(), 'config.txt.sample')
+        if not os.path.exists(config_file) and os.path.exists(sample):
+            shutil.copyfile(sample, config_file)
+
         with codecs.open(config_file, 'r', 'utf-8') as f:
             config = json.load(f)
             f.close()
