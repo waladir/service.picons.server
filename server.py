@@ -10,11 +10,11 @@ class BottleThreadClass(threading.Thread):
     def run(self):
         start_server()
 
-if is_kodi() == True:
-    time.sleep(20)
-    
 bt = BottleThreadClass()
 bt.start()
+
+if is_kodi() == True:
+    time.sleep(3)
 
 interval = 60*60
 next = time.time() + 10

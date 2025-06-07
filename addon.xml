@@ -1,6 +1,7 @@
 ﻿<addon id="service.picons.server" name="Picons Server" provider-name="waladir a lukas.v" version="1.0.0">
   <requires>
     <import addon="xbmc.python" version="3.0.0"/>
+    <import addon="script.module.requests"/>
     <import addon="script.module.bottle"/>
   </requires>
   <extension library="server.py" point="xbmc.service"/>

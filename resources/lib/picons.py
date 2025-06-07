@@ -22,8 +22,8 @@ def remap(picon):
             for row in f:
                 if len(row.strip()) > 0 and row[0] != '#':
                     mapping = row.strip().split('>')
-                    if normalize_picon_name(picon) == normalize_picon_name(mapping[0]) + '.png':
-                        return normalize_picon_name(mapping[1]) + '.png'
+                    if normalize_picon_name(picon) == normalize_picon_name(mapping[0]):
+                        return normalize_picon_name(mapping[1])
     except IOError as error:
         if error.errno != 2:
             display_message('Chyba při načtení remap.txt')
@@ -47,13 +47,13 @@ def clear_cache():
 
 def normalize_picon_name(picon):
     remove_string = [' hd', ' ad', ' md 1', ' md 2', ' md 3', ' md 4', ' md 5', ' md 6', ' md 7', ' md 8', ' ', '+', ':', '/', '&', '.']
-    picon = remove_diacritics(picon).strip().lower()
+    picon = remove_diacritics(picon).strip().lower().replace('.png', '')
     for string in remove_string:
         picon = picon.replace(string, '')
     return picon
 
 def remap_picon(picon):
-    remapped_picon = remap(picon)
+    remapped_picon = remap(picon) + '.png'
     if picon != remapped_picon:
         return get_picon(remapped_picon, False)
     else:
@@ -67,7 +67,7 @@ def get_err_picon():
 
 def get_picon(picon, remap = True):
     data_dir = get_data_dir()
-    picon_filename = normalize_picon_name(picon)
+    picon_filename = normalize_picon_name(picon) + '.png'
     picon_file = os.path.join(data_dir, picon_filename)
     if int(get_config_value('dnu_v_kesi')) > 0:
         if os.path.exists(picon_file):
@@ -75,7 +75,7 @@ def get_picon(picon, remap = True):
                 return file.read()       
         else:
             try:
-                # print(get_config_value('url_s_piconami') + picon_filename)
+                log_message(get_config_value('url_s_piconami') + picon_filename)
                 resp = requests.get(get_config_value('url_s_piconami') + picon_filename)
                 if resp.status_code not in [200]:
                     if remap == True:
