@@ -1,6 +1,6 @@
 <h1>Picons Server</h1>
 
-Picons Server slouží jako zdroj log kanálů, dostupných přes http protokol. Lze ho používat buď jako doplněk v Kodi i samostatně. Jako zdroj jsou používané picony od @lukas.v z https://github.com/luvadcz/piconsserver.
+Picons Server slouží jako zdroj log kanálů, dostupných přes http protokol. Lze ho používat buď jako doplněk v Kodi i samostatně. Jako zdroj jsou používané picony od lukas.v z https://github.com/luvadcz/piconsserver.
 
 <h3>Kodi</h3>
 
@@ -19,15 +19,15 @@ Pokud chcete Picons Server spustit na linuxu se systemd jako službu, jako root/
 
 <h3>Použití</h3>
 
-Picony kanálu vrací http://&lt;IP adresa&gt;:&lt;port&gt;/picons/&lt;jméno kanálu&gt;, např. http://127.0.0.1:8083/picons/ČT1 HD. Za jméno kanálu lze přidat příponu .png, ale není to nezbytně nutné. 
+Piconu kanálu lze stáhnout z http://&lt;IP adresa&gt;:&lt;port&gt;/picons/&lt;jméno kanálu&gt;, např. http://127.0.0.1:8083/picons/ČT1 HD. Za jméno kanálu lze přidat příponu .png, ale není to nezbytně nutné. 
 
 Pro použití v TVheadendu můžete použít http://&lt;IP adresa&gt;:&lt;port&gt;/picons/%C. Při použití v jiných Kodi doplňcích je potřeba použít funkci quote z urllib.parse.
 
-Doplněk převede vygeneruje normalizované jméno souboru. Odstraní diakritiku, převede velká písmena na malá, odstraní mezery, lomítka, dvojtečku, plus a řetězece hd, ad, md X atd. 
+Doplněk převede vygeneruje normalizované jméno souboru. Odstraní diakritiku, převede velká písmena na malá, odstraní mezery, lomítka, dvojtečku, plus a řetězce hd, ad, md X atd. 
 
-V souboru remap.txt v instalaci doplňku lze provést i ruční mapování ve formátu jméno kanálu&gt;jm0no picony.
+V souboru remap.txt v instalaci doplňku lze provést i ruční mapování ve formátu jméno kanálu&gt;jméno picony.
 
 <b><u>Změny</u></b>
 
-1.0.0 (x.x.2025)<br>
+1.0.0 (8.6.2025)<br>
 - první verze<br><br>
