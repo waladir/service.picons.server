@@ -1,16 +1,24 @@
 # -*- coding: utf-8 -*-
 import os
+import shutil
 
-from urllib.request import URLError, urlretrieve, urlopen
 import time
+import requests
 
-from resources.lib.utils import get_script_path, get_data_dir, get_config_value, log_message, load_json_data, save_json_data, remove_diacritics, display_message
+from resources.lib.utils import get_script_path, get_data_dir, get_config_value, log_message, load_json_data, save_json_data, remove_diacritics, display_message, is_kodi
 
 def remap(picon):
     script_dir = get_script_path()
-    filename = os.path.join(script_dir, 'remap.txt')
+    sample = os.path.join(script_dir, 'remap.txt.sample')
+    if is_kodi() == True:
+        data_dir = get_data_dir()
+        filename = os.path.join(data_dir, 'remap.txt')
+    else:
+        filename = os.path.join(script_dir, 'remap.txt')
+    if not os.path.exists(filename) and os.path.exists(sample):
+        shutil.copyfile(sample, filename)
     try:
-        with open(filename, "r") as f:
+        with open(filename, 'r', encoding = 'utf-8') as f:
             for row in f:
                 if len(row.strip()) > 0 and row[0] != '#':
                     mapping = row.strip().split('>')
@@ -38,8 +46,8 @@ def clear_cache():
                 os.remove(os.path.join(data_dir, file))
 
 def normalize_picon_name(picon):
-    remove_string = [' hd', ' ad', ' md 1', ' md 2', ' md 3', ' md 4', ' md 5', ' md 6', ' md 7', ' md 8', ' ', '+', ':', '/']
-    picon = remove_diacritics(picon).lower()
+    remove_string = [' hd', ' ad', ' md 1', ' md 2', ' md 3', ' md 4', ' md 5', ' md 6', ' md 7', ' md 8', ' ', '+', ':', '/', '&']
+    picon = remove_diacritics(picon).strip().lower()
     for string in remove_string:
         picon = picon.replace(string, '')
     return picon
@@ -60,7 +68,6 @@ def get_err_picon():
 def get_picon(picon, remap = True):
     data_dir = get_data_dir()
     picon_filename = normalize_picon_name(picon)
-    print(picon_filename)
     picon_file = os.path.join(data_dir, picon_filename)
     if int(get_config_value('dnu_v_kesi')) > 0:
         if os.path.exists(picon_file):
@@ -68,24 +75,40 @@ def get_picon(picon, remap = True):
                 return file.read()       
         else:
             try:
-                urlretrieve(get_config_value('url_s_piconami') + picon_filename, picon_file)
+                print(get_config_value('url_s_piconami') + picon_filename)
+                resp = requests.get(get_config_value('url_s_piconami') + picon_filename)
+                if resp.status_code not in [200]:
+                    if remap == True:
+                        return remap_picon(picon_filename)
+                    else:
+                        return get_err_picon()
+                file = open(picon_file, 'wb')
+                for chunk in resp:
+                    if chunk:
+                        file.write(chunk)
+                file.close()
                 cache_data = load_json_data({'filename' : 'cache.json', 'description' : 'dat keše'})
                 if cache_data is None:
                     cache_data = {}
                 cache_data.update({picon_filename : int(time.time())})
                 save_json_data({'filename' : 'cache.json', 'description' : 'dat keše'}, cache_data)
                 with open(picon_file, mode='rb') as file:
-                    return file.read()       
-            except URLError as e:
+                    return file.read()   
+            except Exception as e:
                 if remap == True:
                     return remap_picon(picon_filename)
                 else:
                     return get_err_picon()
     else:
         try:
-            response = urlopen(get_config_value('url_s_piconami') + picon_filename)
-            return response.read()
-        except URLError as e:
+            resp = requests.get(get_config_value('url_s_piconami') + picon_filename)
+            if resp.status_code not in [200]:
+                if remap == True:
+                    return remap_picon(picon_filename)
+                else:
+                    return get_err_picon()
+            return resp.read()
+        except Exception as e:
             if remap == True:
                 return remap_picon(picon_filename)
             else:
