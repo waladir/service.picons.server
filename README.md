@@ -2,9 +2,11 @@
 
 Picons Server slouží jako zdroj log kanálů, dostupných přes http protokol. Lze ho používat buď jako doplněk v Kodi i samostatně. Jako zdroj jsou používané picony od lukas.v z https://github.com/luvadcz/piconsserver.
 
+Další informace a podporu najdete na fóru www.xbmc-kodi.cz v KODI - Doplňky - Programy a hry (https://www.xbmc-kodi.cz/prispevek-picons-server)
+
 <h3>Kodi</h3>
 
-Nainstalujte doplněk a v jeho nastavení můžete změnit port pro webserver. Při změně restartněte Kodi.
+Doplněk najdete v XBMC Kodi CZ/SK repozitáři v Služby. V jeho nastavení můžete změnit port pro webserver, případně jak dlouho se budou ikony držet v lokální keši. Při změně restartněte Kodi.
 
 <h3>Samostatný skript</h3>
 
@@ -29,5 +31,5 @@ V souboru remap.txt v instalaci doplňku lze provést i ruční mapování ve fo
 
 <b><u>Změny</u></b>
 
-1.0.0 (8.6.2025)<br>
-- první verze<br><br>
+1.0.0 (8.6.2025)
+- první verze
