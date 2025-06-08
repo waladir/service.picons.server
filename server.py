@@ -3,7 +3,7 @@ import time
 import threading
 
 from resources.lib.web import start_server
-from resources.lib.picons import clear_cache
+from resources.lib.picons import clear_cache, sync_remap_from_sample
 from resources.lib.utils import is_kodi, get_config_value, log_message
 
 class BottleThreadClass(threading.Thread):
@@ -24,6 +24,7 @@ if is_kodi() == True:
     while not xbmc.Monitor().abortRequested():
         if(next < time.time()):
             time.sleep(3)
+            sync_remap_from_sample()
             if int(get_config_value('dnu_v_kesi')) > 0:
                 clear_cache()
                 interval = 60*60
@@ -35,6 +36,7 @@ else:
         while True:
             if(next < time.time()):
                 time.sleep(3)
+                sync_remap_from_sample()
                 if int(get_config_value('dnu_v_kesi')) > 0:
                     log_message('Čištění keše\n')
                     clear_cache()

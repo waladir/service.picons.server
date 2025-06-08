@@ -7,6 +7,32 @@ import requests
 
 from resources.lib.utils import get_script_path, get_data_dir, get_config_value, log_message, load_json_data, save_json_data, remove_diacritics, display_message, is_kodi
 
+def sync_remap_from_sample():
+    script_dir = get_script_path()
+    sample = os.path.join(script_dir, 'remap.txt.sample')
+    if is_kodi() == True:
+        data_dir = get_data_dir()
+        filename = os.path.join(data_dir, 'remap.txt')
+    else:
+        filename = os.path.join(script_dir, 'remap.txt')
+    if os.path.exists(filename) and os.path.exists(sample):
+        try:
+            remaps = []
+            with open(filename, 'r', encoding = 'utf-8') as f:
+                for row in f:
+                    if len(row.strip()) > 0 and row[0] != '#':
+                        remaps.append(row)
+            with open(sample, 'r', encoding = 'utf-8') as s:
+                for row in s:
+                    if len(row.strip()) > 0 and row[0] != '#':
+                        if row not in remaps:
+                            with open(filename, 'a', encoding = 'utf-8') as f:
+                                f.write(row)
+                            f.close()
+        except IOError as error:
+            if error.errno != 2:
+                display_message('Chyba při načtení remap.txt')
+
 def remap(picon):
     script_dir = get_script_path()
     sample = os.path.join(script_dir, 'remap.txt.sample')

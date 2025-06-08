@@ -31,5 +31,8 @@ V souboru remap.txt v instalaci doplňku lze provést i ruční mapování ve fo
 
 <b><u>Změny</u></b>
 
+1.0.1 (9.6.2025)
+- aktualizece remap.txt z remap.txt.sample
+
 1.0.0 (8.6.2025)
 - první verze

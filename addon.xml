@@ -15,6 +15,9 @@ Další informace a podporu najdete na fóru www.xbmc-kodi.cz v KODI - Doplňky 
     <platform>all</platform>
     <source>https://github.com/waladir/service.picons.server</source>
     <news>
+1.0.1 (9.6.2025)
+- aktualizece remap.txt z remap.txt.sample
+
 1.0.0 (8.6.2025)
 - první verze
     </news>
