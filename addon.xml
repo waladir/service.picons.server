@@ -1,4 +1,4 @@
-﻿<addon id="service.picons.server" name="Picons Server" provider-name="waladir, lukas.v" version="1.0.0">
+﻿<addon id="service.picons.server" name="Picons Server" provider-name="waladir, lukas.v" version="1.0.1">
   <requires>
     <import addon="xbmc.python" version="3.0.0"/>
     <import addon="script.module.requests"/>
