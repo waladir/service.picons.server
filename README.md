@@ -2,7 +2,7 @@
 
 Picons Server slouží jako zdroj log kanálů, dostupných přes http protokol. Lze ho používat buď jako doplněk v Kodi i samostatně. Jako zdroj jsou používané picony od lukas.v z https://github.com/luvadcz/piconsserver.
 
-Další informace a podporu najdete na fóru www.xbmc-kodi.cz v KODI - Doplňky - Programy a hry (https://www.xbmc-kodi.cz/prispevek-picons-server)
+Další informace a podporu najdete na fóru www.xbmc-kodi.cz v KODI - Doplňky - Programy a hry (https://www.xbmc-kodi.cz/prispevek-picons-server).
 
 <h3>Kodi</h3>
 
