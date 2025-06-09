@@ -1,6 +1,7 @@
 # Umožňuje převést nestandardní jméa kanálů na jméno picony. Pár je potřeba oddělit znakem >
 :24>rtvs24
 ČT :D / ČT art>ctdart
+# Antik TV
 Barrandov>barrandovtv
 Filmbox basic>filmbox
 Eurosport>eurosport1
@@ -29,3 +30,29 @@ TV Brno 1>brno1
 TV Kladno>kladno1tv
 TV ZAK>zaktv
 V1>v1tv
+# SledovaniTV
+1+1>11international
+ČT Déčko>ctd
+Espreso TV>espresso
+France 24 (English)>france24enfranais
+France 24 (French)>france24inenglish
+Galerie zvířat>loop_naturetv-galerie-zvirat
+Kočičí kavárna>uscenes_cat_cafe
+Korálová zahrada>uscenes_coral_garden
+Mumlavské vodopády>loop_naturetv_mumlava_waterfalls
+OIK TV>oik
+Ošetřování mláďat>loop_naturetv-osetrovani-mladat
+Pláž>uscenes_hammock_beach
+Ptačí krmítko>ptaci_krmitko
+rtm+>rtmplusliberecko
+STVR 24>rtvs24
+Televize Ústeckého kraje>utv
+TV Mňam>mnamtv
+TV Mňau>mnautv
+TV Praha>prahatv
+Zoo Brno - Africká vesnice>zoo_brno_a_vesnice
+Zoo Brno - Komentovaná krmení>zoobrno
+Zoo Brno - Medvěd kamčatský>zoo_brno_m_kamcatsky
+Zoo Brno - Medvěd lední>zoo_brno_m_ledni
+Zoo Brno - Život v zoo>zvirata_v_zoo
+

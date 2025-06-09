@@ -49,7 +49,7 @@ def remap(picon):
                 if len(row.strip()) > 0 and row[0] != '#':
                     mapping = row.strip().split('>')
                     if normalize_picon_name(picon) == normalize_picon_name(mapping[0]):
-                        return normalize_picon_name(mapping[1])
+                        return mapping[1]
     except IOError as error:
         if error.errno != 2:
             display_message('Chyba při načtení remap.txt')
@@ -81,7 +81,7 @@ def normalize_picon_name(picon):
 def remap_picon(picon):
     remapped_picon = remap(picon) + '.png'
     if picon != remapped_picon:
-        return get_picon(remapped_picon, False)
+        return get_picon(remapped_picon, True)
     else:
         return get_err_picon()
 
@@ -91,9 +91,12 @@ def get_err_picon():
     with open(picon_file, mode='rb') as file:
         return file.read()       
 
-def get_picon(picon, remap = True):
+def get_picon(picon, remap = False):
     data_dir = get_data_dir()
-    picon_filename = normalize_picon_name(picon) + '.png'
+    if remap == False:
+        picon_filename = normalize_picon_name(picon) + '.png'
+    else:
+        picon_filename = picon.replace('.png', '') + '.png'
     picon_file = os.path.join(data_dir, picon_filename)
     if int(get_config_value('dnu_v_kesi')) > 0:
         if os.path.exists(picon_file):
@@ -104,7 +107,7 @@ def get_picon(picon, remap = True):
                 log_message(get_config_value('url_s_piconami') + picon_filename)
                 resp = requests.get(get_config_value('url_s_piconami') + picon_filename)
                 if resp.status_code not in [200]:
-                    if remap == True:
+                    if remap == False:
                         return remap_picon(picon_filename)
                     else:
                         return get_err_picon()
@@ -121,7 +124,7 @@ def get_picon(picon, remap = True):
                 with open(picon_file, mode='rb') as file:
                     return file.read()   
             except Exception as e:
-                if remap == True:
+                if remap == False:
                     return remap_picon(picon_filename)
                 else:
                     return get_err_picon()
@@ -129,13 +132,13 @@ def get_picon(picon, remap = True):
         try:
             resp = requests.get(get_config_value('url_s_piconami') + picon_filename)
             if resp.status_code not in [200]:
-                if remap == True:
+                if remap == False:
                     return remap_picon(picon_filename)
                 else:
                     return get_err_picon()
             return resp.read()
         except Exception as e:
-            if remap == True:
+            if remap == False:
                 return remap_picon(picon_filename)
             else:
                 log_message('Chyba při stažení ' + picon_filename)

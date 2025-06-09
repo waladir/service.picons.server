@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import sys
 import time
 import threading
 
@@ -44,3 +45,4 @@ else:
             time.sleep(1)
     except KeyboardInterrupt:
         log_message('Ukončení plánovače pro čištění keše\n')
+        sys.exit()
