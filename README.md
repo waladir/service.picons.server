@@ -31,6 +31,9 @@ V souboru remap.txt v instalaci doplňku lze provést i ruční mapování ve fo
 
 <b><u>Změny</u></b>
 
+1.0.2 (9.6.2025)
+- změna v ošetření znaků + a &
+
 1.0.1 (9.6.2025)
 - aktualizace remap.txt z remap.txt.sample
 - přidání mapování pro SledovaniTV

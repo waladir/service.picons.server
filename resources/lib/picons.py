@@ -72,10 +72,13 @@ def clear_cache():
                 os.remove(os.path.join(data_dir, file))
 
 def normalize_picon_name(picon):
-    remove_string = [' hd', ' ad', ' md 1', ' md 2', ' md 3', ' md 4', ' md 5', ' md 6', ' md 7', ' md 8', ' ', '+', ':', '/', '&', '.', '-']
+    remove_string = [' hd', ' ad', ' md 1', ' md 2', ' md 3', ' md 4', ' md 5', ' md 6', ' md 7', ' md 8', ' ', ':', '/', '.', '-']
+    replace_string = [('+', 'plus'), ('&', 'and')]
     picon = remove_diacritics(picon).strip().lower().replace('.png', '')
     for string in remove_string:
         picon = picon.replace(string, '')
+    for string in replace_string:
+        picon = picon.replace(string[0], string[1])
     return picon
 
 def remap_picon(picon):

@@ -1,6 +1,8 @@
 # Umožňuje převést nestandardní jméa kanálů na jméno picony. Pár je potřeba oddělit znakem >
+# Oneplay
 :24>rtvs24
 ČT :D / ČT art>ctdart
+Crime + Investigation>crimeandinvestigation
 # Antik TV
 Barrandov>barrandovtv
 Filmbox basic>filmbox
@@ -14,7 +16,6 @@ CGTN Documentary>cgtndocu
 CS Film / CS Horror>csfilmhorror
 Doktor TV>tvdoktor
 English Club TV>englishclub
-Film +>filmplus
 France 24 English>france24inenglish
 History Channel>history
 i-Vysočina.CZ>ivysocina
