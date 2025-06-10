@@ -6,7 +6,7 @@
   </requires>
   <extension library="server.py" point="xbmc.service"/>
   <extension point="xbmc.addon.metadata">
-    <summary lang="cs_CZ">Oneplay Server</summary>
+    <summary lang="cs_CZ">Picons Server</summary>
     <description lang="cs_CZ">
 Picons Server slouží jako zdroj log kanálů od lukas.v z https://github.com/luvadcz/piconsserver.
 
@@ -16,7 +16,7 @@ Další informace a podporu najdete na fóru www.xbmc-kodi.cz v KODI - Doplňky 
     <source>https://github.com/waladir/service.picons.server</source>
     <news>
 1.0.2 (9.6.2025)
-- změna v ošetření znaků + a &
+- změna v ošetření znaků + a ampersand
 
 1.0.1 (9.6.2025)
 - aktualizace remap.txt z remap.txt.sample
